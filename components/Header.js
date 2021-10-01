@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Menu from "./icons/menu-boxed.svg";
-import Link from 'next/link'
+import Link from 'next/Link'
 
 export default function Header() {
     const [isMenuOpen, openMenu] = useState(false)

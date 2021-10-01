@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {
     CSSTransition,
     TransitionGroup,
@@ -7,7 +8,6 @@ import {
 export default function Slider() {
     return (
         <div>
-            
         </div>
     )
 }
