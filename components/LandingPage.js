@@ -5,7 +5,6 @@ import Phone from "./icons/phone.svg";
 import Link from 'next/Link'
 import Image from 'next/Image'
 import Gallery from './Gallery';
-import Slider from './Slider'
 
 const location = {
     lat: 11.676927,
