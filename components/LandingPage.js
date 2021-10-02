@@ -29,7 +29,6 @@ export default function LandingPage({ children }) {
     return (
         <>
             <Header />
-            <div>
                 {/* main */}
                 <div className="w-full overflow-hidden bg-center bg-auto bg-fixed bg-no-repeat"
                 >
@@ -68,8 +67,6 @@ export default function LandingPage({ children }) {
 
 
                 {/* About us */}
-
-            </div>
             {children}
 
             <Footer />

@@ -21,9 +21,7 @@
   .nav-link{
     @apply text-brown-dark text-center font-medium text-xl transition transform duration-300 hover:scale-110 hover:text-gray-600 px-4;
   }
- .hide-scroll::-webkit-scrollbar{
-   display:none;
- }
+
 }
 @layer utilities {
   .scroll-snap-none {
@@ -52,5 +50,11 @@
   }
   .scroll-snap-y-screen{
     scroll-snap-points-y: repeat(100vh);
+  }
+  .hide-scroll::-webkit-scrollbar{
+    display:none;
+  }
+  .smooth-scroll {
+    scroll-behavior: smooth;
   }
 }
