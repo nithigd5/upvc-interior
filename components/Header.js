@@ -22,12 +22,12 @@ export default function Header() {
                             Home
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href="gallery">
                         <a className="nav-link" >
                             Gallery
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href="projects">
                         <a className="nav-link" >
                             Projects
                         </a>
@@ -37,7 +37,7 @@ export default function Header() {
                             Contact Us
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href="aboutus">
                         <a className="nav-link" >
                             About Us
                         </a>
@@ -51,12 +51,12 @@ export default function Header() {
                             Home
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href="gallery">
                         <a className="nav-link" >
                             Gallery
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href="projects">
                         <a className="nav-link" >
                             Projects
                         </a>
@@ -66,7 +66,7 @@ export default function Header() {
                             Contact Us
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href="aboutus">
                         <a className="nav-link" >
                             About Us
                         </a>

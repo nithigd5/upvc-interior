@@ -5,6 +5,7 @@ import Phone from "./icons/phone.svg";
 import Link from 'next/link'
 import Image from 'next/image'
 import Gallery from './Gallery';
+import Projects from './Projects';
 
 const location = {
     lat: 11.676927,
@@ -23,7 +24,7 @@ const galleryItems = {
 
 const sliderImages = ["/images/i (1).jpg", "/images/i (2).jpg", "/images/i (3).jpg", "/images/i (4).jpg"]
 
-export default function LandingPage({ children }) {
+export default function LandingPage({ projects, children }) {
 
     return (
         <>
@@ -42,7 +43,7 @@ export default function LandingPage({ children }) {
                     <div className="text-2xl font-medium z-20 mb-3">PVC Interiors</div>
                     <div className=" text-3xl text-center md:text-6xl font-black tracking-widest z-10 text-gray-900 justify-end">
                         Best Interior Designers in India</div>
-                    <Link href="/">
+                    <Link href="contactus">
                         <a className="btn transform font-medium border-2 rounded-md my-4" >Book Now</a>
                     </Link>
                     <div className="text-2xl text-center font-semibold md:text-4xl text-brown-dark flex items-center gap-2 transition
@@ -58,9 +59,9 @@ export default function LandingPage({ children }) {
             {/* Slider */}
             {/* <Slider images={sliderImages} /> */}
             {/* Gallery */}
-            <Gallery {...galleryItems} />
+            <Gallery {...galleryItems} className="my-3 p-3 shadow-md bg-gray-200" />
             {/* Our Projects */}
-
+            <Projects projects={projects} />
             {/* Location */}
 
 

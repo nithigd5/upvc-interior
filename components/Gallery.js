@@ -3,7 +3,7 @@ import {useState} from 'react'
 import Image from 'next/image'
 import { AiFillCaretRight, AiFillCaretLeft, AiOutlineZoomIn } from 'react-icons/ai';
 
-export default function Gallery({ images, description }) {
+export default function Gallery({ images, description, className }) {
     var scrollDiv = React.useRef()
     // const [mouseDown, setMouseDown] = useState(false);
 
@@ -29,12 +29,12 @@ export default function Gallery({ images, description }) {
 
     return (
         <>
-            <div className="bg-gray-200 relative my-3 p-3 shadow-md">
+            <div className={"relative "+className} >
                 {/* <div className="absolute w-full h-full bg-gray-200 opacity-50 z-10"></div> */}
-                <div onMouseDown={scrollLeft} className="absolute left-5  z-30 bg-gray-200 opacity-80 hidden items-center justify-center cursor-pointer w-20 h-20 top-20  rounded-full hover:bg-gray-400 md:flex ">
+                <div onMouseDown={scrollLeft} className="absolute left-5  z-30 bg-gray-200 opacity-80 flex items-center justify-center cursor-pointer w-14 h-14 top-20  rounded-full hover:bg-gray-400 md:w-20 md:h-20 ">
                     <AiFillCaretLeft className="text-6xl text-black" />
                 </div>
-                <div onMouseDown={scrollRight} className="absolute right-5  z-30 bg-gray-200 opacity-80 hidden items-center justify-center cursor-pointer w-20 h-20 top-20  rounded-full hover:bg-gray-400 md:flex ">
+                <div onMouseDown={scrollRight} className="absolute right-5  z-30 bg-gray-200 opacity-80 flex items-center justify-center cursor-pointer w-14 h-14 top-20  rounded-full hover:bg-gray-400 md:w-20 md:h-20 ">
                     <AiFillCaretRight className="text-6xl text-black" />
                 </div>
                 {/* <div className="col-span-2 md:col-span-4  z-20"> */}

@@ -9,7 +9,7 @@ export default function Projects({projects}) {
           name="description"
           content="Gallery | PVC Interiors"
         />
-        <title>Contact Us | PVC Interiors </title>
+        <title>Projects | PVC Interiors </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <Layout >
