@@ -5,7 +5,6 @@ import { AiFillCaretRight, AiFillCaretLeft, AiOutlineZoomIn } from 'react-icons/
 
 export default function Gallery({ images, description }) {
     var scrollDiv = React.useRef()
-    console.log(scrollDiv)
     // const [mouseDown, setMouseDown] = useState(false);
 
 
@@ -15,8 +14,7 @@ export default function Gallery({ images, description }) {
         if(cur.scrollLeft>=0 && cur.scrollLeft<= maxScroll){
             cur.scrollLeft = cur.scrollLeft - 500 
         }
-        console.log(cur.scrollLeft)
-        console.log(cur.scrollWidth)
+
         
     }
     const scrollRight = ()=>{
@@ -31,7 +29,7 @@ export default function Gallery({ images, description }) {
 
     return (
         <>
-            <div className="bg-gray-50 relative ">
+            <div className="bg-gray-200 relative my-3 p-3 shadow-md">
                 {/* <div className="absolute w-full h-full bg-gray-200 opacity-50 z-10"></div> */}
                 <div onMouseDown={scrollLeft} className="absolute left-5  z-30 bg-gray-200 opacity-80 hidden items-center justify-center cursor-pointer w-20 h-20 top-20  rounded-full hover:bg-gray-400 md:flex ">
                     <AiFillCaretLeft className="text-6xl text-black" />
@@ -46,7 +44,7 @@ export default function Gallery({ images, description }) {
                 {/* </div> */}
                 <div className="flex overflow-x-scroll w-full hide-scroll smooth-scroll" ref={scrollDiv}>
                     {images.map((img) => (
-                        <div className="relative mx-3 flex-shrink-0 group" key={img} style={{width:'400px', height:'250px'}}>
+                        <div className="relative mx-3 flex-shrink-0 group shadow-md" key={img} style={{width:'300px', height:'200px'}}>
                             <div className="absolute w-full h-full bg-black z-10 opacity-20 group-hover:opacity-80 rounded-md shadow-md cursor-pointer" >
                             </div>
                                 <AiOutlineZoomIn className="cursor-pointer text-4xl text-white z-20 absolute opacity-0 group-hover:opacity-80 top-1/2 left-1/2" />
