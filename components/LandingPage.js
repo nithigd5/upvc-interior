@@ -3,7 +3,7 @@ import Footer from './Footer';
 import Header from "./Header"
 import Phone from "./icons/phone.svg";
 import Link from 'next/link'
-import Image from 'next/Image'
+import Image from 'next/image'
 import Gallery from './Gallery';
 
 const location = {
