@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from './Footer';
 import Header from "./Header"
 import Phone from "./icons/phone.svg";
-import Link from 'next/Link'
+import Link from 'next/link'
 import Image from 'next/Image'
 import Gallery from './Gallery';
 
