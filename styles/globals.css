@@ -21,8 +21,8 @@
   .nav-link{
     @apply text-brown-dark text-center font-medium text-xl transition transform duration-300 hover:scale-110 hover:text-gray-600 px-4;
   }
- .slider{
-   
+ .hide-scroll::-webkit-scrollbar{
+   display:none;
  }
 }
 @layer utilities {

@@ -9,7 +9,7 @@ export default function Footer() {
 
 
     return (
-        <div className="flex flex-col gap-3 w-full bg-gray-200 rounded-md shadow-md">
+        <div className="flex flex-col gap-3 w-full bg-gray-200 rounded-md shadow-md z-50">
             <div className="flex-col flex md:flex-row w-full items-center justify-around">
                 <div className="flex flex-col">
                     <div>
