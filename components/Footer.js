@@ -11,15 +11,15 @@ export default function Footer() {
 
 
     return (
-        <div className="relative top-full left-0 w-full ">
-            <div className="flex flex-col gap-3 w-full pt-4 bg-gray-200 rounded-md shadow-md z-50">
+        <div className="relative top-full left-0 w-full bg-white">
+            <div className="flex flex-col gap-3 w-full pt-4 bg-white rounded-md shadow-md z-50">
                 <div className="flex-col flex md:flex-row w-full items-center justify-around">
                     <div className="flex flex-col">
                         <div>
                             <h4 className="font-semibold text-xl w-full text-center">Links</h4>
                             <div className="grid grid-cols-3 place-items-center w-full">
                                 {navItems.map((navItem) => {
-                                    return (<Link href={navItem.link}>
+                                    return (<Link href={navItem.link} key={navItem.link}>
                                         <a className="p-2 text-lg font-medium text-blue-600" >
                                             {navItem.title}
                                         </a>
@@ -54,7 +54,7 @@ export default function Footer() {
                         <div className="flex flex-col md:flex-row items-center justify-evenly w-full">
                             <Gmap size={{ width: "300px", height: "200px" }} coord={location} />
                             <div>
-                                <div className="grid grid-cols-3 ">
+                                <div className="grid grid-cols-3 place-items-center">
                                     <div className="p-2 text-lg font-medium text-blue-600">Salem</div>
                                     <div className="p-2 text-lg font-medium text-blue-600">Chennai</div>
                                     <div className="p-2 text-lg font-medium text-blue-600">Erode</div>

@@ -30,8 +30,7 @@ export default function LandingPage({ projects, children }) {
         <>
             <Header />
             {/* main */}
-            <div className="w-full overflow-hidden bg-center bg-auto bg-fixed bg-no-repeat mb-4"
-            >
+            <div className="w-full overflow-hidden bg-center bg-auto bg-fixed bg-no-repeat mb-4">
                 <div className="flex flex-col items-center relative">
                     <div className="absolute w-full h-full">
                         <div className="relative" style={{ width: "100%", height: "100%" }}>
@@ -43,7 +42,7 @@ export default function LandingPage({ projects, children }) {
                     <div className="text-2xl font-semibold z-20 mb-3 text-blue-800">Dream Interiors</div>
                     <div className=" text-3xl text-center md:text-5xl font-black tracking-wide z-10 bg-gradient-to-b from-blue-700 to-blue-800 bg-clip-text text-transparent justify-end">
                         Best Interior Designers in Tamil Nadu</div>
-                    <Link href="contactus">
+                    <Link href="/contactus">
                         <a className="btn transform font-medium border-2 rounded-md my-4 " >Book Now</a>
                     </Link>
                     <div className="text-2xl text-center font-semibold md:text-3xl text-blue-900 flex items-center gap-2 transition
@@ -68,7 +67,9 @@ export default function LandingPage({ projects, children }) {
             {/* About us */}
             {children}
 
+
             <Footer />
+
         </>
     )
 }

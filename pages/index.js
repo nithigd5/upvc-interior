@@ -26,6 +26,7 @@ export default function Home({projects}) {
       <LandingPage projects={projects}>
         
       </LandingPage>
+
     </div>
   )
 }

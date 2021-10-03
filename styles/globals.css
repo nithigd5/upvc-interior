@@ -4,24 +4,26 @@
  */
 
 @layer base {
-   
-    body{
-      @apply font-Poppins;
-    }
+  body {
+    @apply font-Poppins;
   }
+}
 
 @layer components {
-  .btn{
+  .btn {
     @apply hover:bg-blue-700 hover:bg-transparent py-2 px-4 border-2 border-blue-600 bg-blue-600 text-white w-max;
   }
   .btn-green {
     @apply text-green-600 bg-white focus:text-white focus:bg-green-600 focus:ring-2 focus:ring-green-600 hover:bg-green-400 hover:text-white
-    focus:shadow-lg ;
+    focus:shadow-lg;
   }
-  .nav-link{
+  .nav-link {
     @apply text-blue-800 text-center font-medium text-xl transition transform duration-300 hover:scale-110 hover:text-gray-600 px-4;
   }
-
+  .overlay {
+    @apply fixed w-full h-full top-0 left-0 bottom-0 right-0 z-40 cursor-pointer;
+    background-color: rgba(0,0,0,0.5);
+  }
 }
 @layer utilities {
   .scroll-snap-none {
@@ -33,26 +35,26 @@
   .scroll-snap-y {
     scroll-snap-type: y;
   }
-  .scroll-snap-x-proximity{
+  .scroll-snap-x-proximity {
     scroll-snap-type: x proximity;
   }
-  .scroll-snap-x-mandatory{
+  .scroll-snap-x-mandatory {
     scroll-snap-type: x mandatory;
   }
-  .scroll-snap-y-proximity{
+  .scroll-snap-y-proximity {
     scroll-snap-type: y proximity;
   }
-  .scroll-snap-y-mandatory{
+  .scroll-snap-y-mandatory {
     scroll-snap-type: y mandatory;
   }
-  .scroll-snap-align-start{
+  .scroll-snap-align-start {
     scroll-snap-align: start;
   }
-  .scroll-snap-y-screen{
+  .scroll-snap-y-screen {
     scroll-snap-points-y: repeat(100vh);
   }
-  .hide-scroll::-webkit-scrollbar{
-    display:none;
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
   }
   .smooth-scroll {
     scroll-behavior: smooth;
