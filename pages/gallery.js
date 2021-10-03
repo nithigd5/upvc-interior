@@ -7,7 +7,7 @@ export default function Gallery() {
       <Head>
         <meta
           name="description"
-          content="Gallery | PVC Interiors"
+          content="Gallery | Dream Interiors"
         />
         <title>Gallery | PVC Interiors </title>
         <link rel="icon" href="/favicon.ico" />

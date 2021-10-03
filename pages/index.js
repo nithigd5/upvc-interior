@@ -2,7 +2,7 @@ import Head from 'next/head'
 import LandingPage from "../components/LandingPage"
 import { useRouter } from 'next/router'
 
-export async function getServerSideProps() {
+export async function getServerSideProps() {  
   const res = await fetch(process.env.DOMAIN_NAME+'/api/getProjects')
   const projects = await res.json()
   return {
@@ -18,9 +18,9 @@ export default function Home({projects}) {
       <Head>
         <meta
           name="description"
-          content="PVC Interiors | Best Interior Designers in India"
+          content="Dream Interiors | Best U-PVC Interior Designers in India"
         />
-        <title>PVC Interiors </title>
+        <title>Dream Interiors | U-PVC Interior</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LandingPage projects={projects}>
