@@ -25,6 +25,13 @@ export default function Gallery({ images, description, className }) {
         }
 
     }
+    function isOverflown(element) {
+        if (typeof window !== "undefined")
+        return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+        else return true
+    }
+    
+
     if (viewer != null) {
         document.body.style.overflow = "hidden"
     } else {
@@ -35,11 +42,11 @@ export default function Gallery({ images, description, className }) {
         <>
             <div className={"relative " + className} >
                 {/* <div className="absolute w-full h-full bg-gray-200 opacity-50 z-10"></div> */}
-                <div onMouseDown={scrollLeft} className="absolute left-5  z-30 bg-gray-200 opacity-80 flex items-center justify-center cursor-pointer w-14 h-14 top-20  rounded-full hover:bg-gray-400 ">
-                    <AiFillCaretLeft className="text-4xl text-black" />
+                <div onMouseDown={scrollLeft} className={`absolute left-5  z-30 bg-gray-200 opacity-80 items-center justify-center cursor-pointer w-10 h-10 top-16  rounded-full hover:bg-gray-400 flex `}>
+                    <AiFillCaretLeft className="text-2xl text-black" />
                 </div>
-                <div onMouseDown={scrollRight} className="absolute right-5  z-30 bg-gray-200 opacity-80 flex items-center justify-center cursor-pointer w-14 h-14 top-20  rounded-full hover:bg-gray-400">
-                    <AiFillCaretRight className="text-4xl text-black" />
+                <div onMouseDown={scrollRight} className="absolute right-5  z-30 bg-gray-200 opacity-80 flex items-center justify-center cursor-pointer w-10 h-10 top-16  rounded-full hover:bg-gray-400">
+                    <AiFillCaretRight className="text-2xl text-black" />
                 </div>
                 {/* <div className="col-span-2 md:col-span-4  z-20"> */}
                 {/* <Link href="/">
@@ -48,7 +55,7 @@ export default function Gallery({ images, description, className }) {
                 {/* </div> */}
                 <div className="flex overflow-x-scroll w-full hide-scroll smooth-scroll" ref={scrollDiv}>
                     {images.map((img) => (
-                        <div onClick={() => { openViewer(img) }} className="relative mx-3 flex-shrink-0 group shadow-md" key={img} style={{ width: '300px', height: '200px' }}>
+                        <div onClick={() => { openViewer(img) }} className="relative mx-3 flex-shrink-0 group shadow-md" key={img} style={{ width: '200px', height: '150px' }}>
                             <div className="absolute w-full h-full bg-black z-10 opacity-20 group-hover:opacity-80 rounded-md shadow-md cursor-pointer" >
                             </div>
                             <AiOutlineZoomIn className="cursor-pointer text-4xl text-white z-20 absolute opacity-0 group-hover:opacity-80 top-1/2 left-1/2" />
