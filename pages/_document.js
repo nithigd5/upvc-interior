@@ -22,7 +22,7 @@ class MyDocument extends Document {
                     <meta property="og:description" content="Dream Interiors | U-PVC Interior is the one of the best designers in tamil nadu. We are from Salem and we work all over Tamil Nadu. " />
                     <meta property="og:type" content="article" />
                     <meta property="og:image" content="https://upvc-interior.shopgeo.in/ms-icon-310x310.png" />
-                    <meta property="og:image" content="https://upvc-interior.shopgeo.in/logo.jpg" />
+                    {/* <meta property="og:image" content="https://upvc-interior.shopgeo.in/logo.jpg" /> */}
 
                 </Head>
                 <body className="bg-gray-200">
