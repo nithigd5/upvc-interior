@@ -1,5 +1,7 @@
 import React from 'react'
 import Gmap from './Gmap'
+import { navItems } from './Header'
+import Link from 'next/link';
 
 export default function Footer() {
     const location = {
@@ -9,26 +11,31 @@ export default function Footer() {
 
 
     return (
-        <div className="relative top-full left-0 w-full">
-            <div className="flex flex-col gap-3 w-full bg-gray-200 rounded-md shadow-md z-50">
+        <div className="relative top-full left-0 w-full ">
+            <div className="flex flex-col gap-3 w-full pt-4 bg-gray-200 rounded-md shadow-md z-50">
                 <div className="flex-col flex md:flex-row w-full items-center justify-around">
                     <div className="flex flex-col">
                         <div>
                             <h4 className="font-semibold text-xl w-full text-center">Links</h4>
-                            <div className="flex flex-row">
-                                <div className="p-2 text-lg font-medium text-blue-600">Home</div>
-                                <div className="p-2 text-lg font-medium text-blue-600">Contact Us</div>
-                                <div className="p-2 text-lg font-medium text-blue-600">Gallery</div>
-                                <div className="p-2 text-lg font-medium text-blue-600">Projects</div>
+                            <div className="grid grid-cols-3 place-items-center w-full">
+                                {navItems.map((navItem) => {
+                                    return (<Link href={navItem.link}>
+                                        <a className="p-2 text-lg font-medium text-blue-600" >
+                                            {navItem.title}
+                                        </a>
+                                    </Link>)
+                                })}
                             </div>
                         </div>
                         <div>
                             <h4 className="font-semibold text-xl w-full text-center">Recent Works</h4>
-                            <div className="flex flex-row">
+                            <div className="grid grid-cols-3 place-items-center w-full">
+                                <div className="p-2 text-lg font-medium text-blue-600">Salem</div>
                                 <div className="p-2 text-lg font-medium text-blue-600">Chennai</div>
-                                <div className="p-2 text-lg font-medium text-blue-600">Salem </div>
-                                <div className="p-2 text-lg font-medium text-blue-600">Coimbatore</div>
+                                <div className="p-2 text-lg font-medium text-blue-600">Erode</div>
+                                <div className="p-2 text-lg font-medium text-blue-600">Tenkasi</div>
                                 <div className="p-2 text-lg font-medium text-blue-600">Madurai</div>
+                                <div className="p-2 text-lg font-medium text-blue-600">Namakkal</div>
                             </div>
                         </div>
                     </div>

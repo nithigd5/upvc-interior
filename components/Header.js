@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Menu from "./icons/menu-boxed.svg";
 import Link from 'next/link'
 
-const navItems = [
+export const navItems = [
     {title: "Home",link: "/"}, 
     {title: "Gallery", link: "/gallery"}, 
     { title: "Project", link: "/projects" },   
