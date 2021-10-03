@@ -7,7 +7,7 @@ class MyDocument extends Document {
     }
     render() {
         return (
-            <Html>
+            <Html lang="en">
                 <Head>
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
