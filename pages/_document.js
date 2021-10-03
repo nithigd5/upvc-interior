@@ -14,7 +14,7 @@ class MyDocument extends Document {
                     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
                     <meta name="robots" content="all" />
-                    <meta itemprop="image" content="https://upvc-interior.shopgeo.in/ms-icon-310x310.png"></meta>
+                    <meta itemProp="image" content="https://upvc-interior.shopgeo.in/ms-icon-310x310.png"></meta>
 
                     <meta property="og:title" content="Dream Interiors | U - PVC Interior" />
                     <meta property="og:site_name" content="Dream Interiors" />
