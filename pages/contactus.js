@@ -7,7 +7,7 @@ export default function ContactUs() {
       <Head>
         <meta
           name="description"
-          content="Gallery | Dream Interiors"
+          content="Contact Us | Dream Interiors"
         />
         <title>Contact Us | PVC Interiors </title>
       </Head>

@@ -7,7 +7,7 @@ export default function Projects({projects}) {
       <Head>
         <meta
           name="description"
-          content="Gallery | PVC Interiors"
+          content="Projects | PVC Interiors"
         />
         <title>Projects | Dream Interiors</title>
         <link rel="icon" href="/favicon.ico" />
