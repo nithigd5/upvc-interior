@@ -16,7 +16,7 @@ export default function ContactUs() {
       <Layout>
         <div className="grid md:grid-cols-2  grid-cols-1 w-full place-content-center relative pt-12">
           <ContactForm />
-          <Image src="/images/Lshape1.jpg" layout="fill" objectFit="cover" objectPosition="center" className="filter blur-0" quality={100} />
+          <Image src="/images/Lshape1.jpg" alt="U PVC Dream Interiors " layout="fill" objectFit="cover" objectPosition="center" className="filter blur-0" quality={100} />
           <div className="h-full w-full absolute bg-white  opacity-40 z-0" />
           <div className="p-3 relative h-full w-full flex flex-col gap-3 items-center justify-center">
             <h4 className="font-black text-3xl md:text-5xl text-brown text-center">

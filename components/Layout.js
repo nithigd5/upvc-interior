@@ -4,7 +4,7 @@ import Header from "./Header"
 
 export default function Layout({ children, className }) {
     return (
-        <div className={className} className="bg-transparent" >
+        <div className="bg-transparent" >
             <Header />
             {children}
             <Footer className="relative bottom-0 w-full" />
