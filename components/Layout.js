@@ -2,12 +2,12 @@ import React from 'react'
 import Footer from './Footer';
 import Header from "./Header"
 
-export default function Layout({ children }) {
+export default function Layout({ children, className }) {
     return (
-        <div>
+        <div className={className} className="bg-transparent" >
             <Header />
             {children}
-            <Footer />
+            <Footer className="relative bottom-0 w-full" />
         </div>
     )
 }

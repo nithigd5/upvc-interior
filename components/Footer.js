@@ -3,7 +3,7 @@ import Gmap from './Gmap'
 import { navItems } from './Header'
 import Link from 'next/link';
 
-export default function Footer() {
+export default function Footer(props) {
     const location = {
         lat: 11.676927,
         lng: 78.134517
@@ -11,8 +11,8 @@ export default function Footer() {
 
 
     return (
-        <div className="relative top-full left-0 w-full bg-white">
-            <div className="flex flex-col gap-3 w-full pt-4 bg-white rounded-md shadow-md z-50">
+        <div className="relative top-full left-0 w-full bg-white" {...props }>
+            <div className="flex flex-col gap-3 w-full pt-4 bg-gray-50 rounded-md shadow-md z-50">
                 <div className="flex-col flex md:flex-row w-full items-center justify-around">
                     <div className="flex flex-col">
                         <div>
