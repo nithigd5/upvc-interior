@@ -11,8 +11,8 @@ async function sendContactMail(title, body, to) {
             pass: mailConfig.password,
         },
     });
-    let adminMail = await sendToAdmin(transporter, title, body)
-    let userMail = await sendToUser(transporter, title, body, to)
+    // let adminMail = await sendToAdmin(transporter, title, body)
+    // let userMail = await sendToUser(transporter, title, body, to)
 }
 
 async function sendToAdmin(transporter, title, body) {
