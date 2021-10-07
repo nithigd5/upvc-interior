@@ -3,7 +3,7 @@ import LandingPage from "../components/LandingPage"
 import { useRouter } from 'next/router'
 
 export async function getServerSideProps() {  
-  const res = await fetch(process.env.DOMAIN_NAME+'/api/getProjects')
+  const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME+'/api/getProjects')
   const projects = await res.json()
   return {
     props: {
