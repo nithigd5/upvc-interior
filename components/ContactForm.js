@@ -63,7 +63,9 @@ export default function ContactForm() {
                 <input placeholder="Phone"
                     {...register("phone", {
                         required: true,
-                        pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[6789]\d{9}|(\d[ -]?){10}\d$/
+                        pattern: /[6-9][0-9]{9}/,
+                        minLength: 10,
+                        maxLength:10,
                     })} type="number" className="input" />
 
                 <div className="text-red-500 font-medium ">
