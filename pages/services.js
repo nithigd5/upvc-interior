@@ -3,7 +3,7 @@ import Service from '../components/Service'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + '/api/getServices')
     const services = await res.json()
     return {
