@@ -68,12 +68,12 @@ export default function Gallery({ images, description, className }) {
             <p className="col-span-2 md:col-span-4 p-3 w-full font-normal text-lg relative text-gray-800">{description}</p>
 
             <div className={"overlay " + (viewer ? "" : " hidden")} >
-                {viewer &&
-                    <div className="z-50 relative w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-                        <Image src={viewer} layout="fill" className="rounded-xl shadow-xl" objectFit="contain" objectPosition="center"/>
                         <AiFillCloseCircle 
                         className="absolute z-50 text-4xl text-blue-700 right-5 top-5 bg-white rounded-full
                          transition-transform transform duration-300 hover:scale-125" onClick={() => { openViewer(null) }} />
+                {viewer &&
+                    <div className="z-50 relative w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+                        <Image src={viewer} layout="fill" className="rounded-xl shadow-xl" objectFit="contain" objectPosition="center"/>
                     </div>
                 }
             </div>  

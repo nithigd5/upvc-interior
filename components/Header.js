@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 export const navItems = [
     {title: "Home",link: "/"}, 
+    { title: "Our Services", link: "/services" },
+    { title: "Projects", link: "/projects" },   
     {title: "Gallery", link: "/gallery"}, 
-    { title: "Project", link: "/projects" },   
     { title: "Contact Us", link: "/contactus"},
-    { title: "About Us", link: "/aboutus" }
 ]
 
 export default function Header() {
