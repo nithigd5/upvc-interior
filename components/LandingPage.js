@@ -47,7 +47,7 @@ export default function LandingPage({ projects, children }) {
                     </Link>
                     <div className="text-2xl text-center font-semibold md:text-3xl text-blue-900 flex items-center gap-2 transition
                          transform duration-300 hover:scale-110 cursor-pointer">
-                        <span>Call Now : 9943711108</span>
+                        <span>Call Now : {process.env.NEXT_PUBLIC_OWNER_PHONE}</span>
                         <Phone className="stroke-0 stroke-current" />
                     </div>
                     <div className="p-3 text-center text-sm md:text-lg z-20 font-medium text-gray-700">

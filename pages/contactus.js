@@ -23,7 +23,7 @@ export default function ContactUs() {
             <h4 className="font-black text-3xl md:text-5xl text-brown text-center">
               Feel Free to Call Us <br/> 
               <span className="text-2xl md:text-3xl text-brown-dark">
-              +91 9943711108
+              +91 {process.env.NEXT_PUBLIC_OWNER_PHONE}
               </span>
             </h4>
             <p className="font-medium text-xl text-center text-brown-dark md:text-2xl">
