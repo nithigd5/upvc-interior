@@ -49,7 +49,9 @@ export default function Header() {
                 })}
                 </div>
             }
-            
+            <div className={`absolute w-screen h-screen z-30 bg-black opacity-20 ${isMenuOpen ? '' :'hidden'}`} onClick={()=>{
+                openMenu(false);
+            }} /> 
         </>
     )
 }
