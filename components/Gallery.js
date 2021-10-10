@@ -2,11 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import Image from 'next/image'
 import { AiFillCaretRight, AiFillCaretLeft, AiOutlineZoomIn, AiFillCloseCircle } from 'react-icons/ai';
+import image from 'next/image';
 
-export default function Gallery({ images, description, className }) {
+export default function Gallery({ items , description, className }) {
     var scrollDiv = React.useRef()
     const [viewer, openViewer] = useState(null);
-
 
     const scrollLeft = () => {
         var cur = scrollDiv.current
@@ -54,12 +54,12 @@ export default function Gallery({ images, description, className }) {
                 Our Gallery</h4></Link> */}
                 {/* </div> */}
                 <div className="flex overflow-x-scroll w-full hide-scroll smooth-scroll" ref={scrollDiv}>
-                    {images.map((img) => (
-                        <div onClick={() => { openViewer(img) }} className="relative mx-3 flex-shrink-0 group shadow-md" key={img} style={{ width: '200px', height: '150px' }}>
+                    {items.map((img) => (
+                        <div onClick={() => { openViewer(img) }} className="relative mx-3 flex-shrink-0 group shadow-md" key={img.image} style={{ width: '200px', height: '150px' }}>
                             <div className="absolute w-full h-full bg-black z-10 opacity-20 group-hover:opacity-80 rounded-md shadow-md cursor-pointer" >
                             </div>
                             <AiOutlineZoomIn className="cursor-pointer text-4xl text-white z-20 absolute opacity-0 group-hover:opacity-80 top-1/2 left-1/2" />
-                            <Image layout="fill" src={img} title="interior design gallery" alt="interior design gallery" objectFit="cover" objectPosition="center"
+                            <Image layout="fill" src={img.image} title={img.title} alt={img.title} objectFit="cover" objectPosition="center"
                                 className="rounded-md shadow-md relative" />
                         </div>)
                     )}
@@ -73,7 +73,7 @@ export default function Gallery({ images, description, className }) {
                          transition-transform transform duration-300 hover:scale-125" onClick={() => { openViewer(null) }} />
                 {viewer &&
                     <div className="z-50 relative w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-                        <Image src={viewer} layout="fill" className="rounded-xl shadow-xl" objectFit="contain" objectPosition="center"/>
+                        <Image src={viewer.image} alt={viewer.title} title={viewer.title} layout="fill" className="rounded-xl shadow-xl" objectFit="contain" objectPosition="center"/>
                     </div>
                 }
             </div>  

@@ -1,7 +1,20 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
+import GalleryGrid from '../components/GalleryGrid'
 
-export default function Gallery() {
+export async function getServerSideProps() {  
+  const res1 = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME+'/api/getGallery')
+
+  const galleryItems = await res1.json()
+
+  return {
+    props: {
+      galleryItems,
+    },
+  }
+}
+
+export default function GalleryPage({ galleryItems }) {
   
   return (
     <div>
@@ -14,13 +27,11 @@ export default function Gallery() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <Layout >
-      <div className="h-screen w-full flex items-center justify-center">
-      <h1 className="text-4xl font-bold">
-        Page is UnderConstruction
-      </h1>
-      </div>
+      <div className="h-16"/>
+      <GalleryGrid {...galleryItems}  />
+      <div className="h-8"/>
+      
     </Layout>
     </div>
   )
 }
-

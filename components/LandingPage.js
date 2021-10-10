@@ -17,14 +17,11 @@ const mapSize = {
     height: '200px'
 };
 
-const galleryItems = {
-    images: ["/images/i (1).jpg", "/images/i (2).jpg", "/images/i (3).jpg", "/images/i (4).jpg", "/images/i (5).jpg", "/images/i (6).jpg"],
-    description: "Do you want to setup a PVC modular kitchen for your home? You have come to the right place. We have PVC modular kitchens for different customers. Our company has a lot of customers, especially salem head office branch office coimbatore, and all over tamil nadu."
-}
+
 
 const sliderImages = ["/images/i (1).jpg", "/images/i (2).jpg", "/images/i (3).jpg", "/images/i (4).jpg"]
 
-export default function LandingPage({ projects, children }) {
+export default function LandingPage({ galleryItems, projects, children }) {
 
     return (
         <>
@@ -62,7 +59,6 @@ export default function LandingPage({ projects, children }) {
             {/* Our Projects */}
             <Projects projects={projects} />
             {/* Location */}
-
 
             {/* About us */}
             {children}
