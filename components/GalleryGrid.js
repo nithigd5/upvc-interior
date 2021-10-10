@@ -11,8 +11,8 @@ export default function GalleryGrid({ items, description }) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {items.map((img) => (
                     
-                    <div onClick={() => { openViewer(img) }} className="relative mx-3 flex-shrink-0 group shadow-md" key={img.image} 
-                    style={{ maxWidth: '450px', maxHeight: '250px', minHeight: '200px', minWidth: '300px' }}>
+                    <div onClick={() => { openViewer(img) }} className="relative mx-3 flex-shrink-0 group shadow-md md:h-56" key={img.image} 
+                    style={{ maxWidth: '450px', maxHeight: '250px', minHeight: '150px', minWidth: '150px' }}>
 
                         <div className="absolute w-full h-full bg-black z-10 opacity-20 group-hover:opacity-80 rounded-md shadow-md cursor-pointer" >
                         </div>

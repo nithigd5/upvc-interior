@@ -22,13 +22,13 @@ export default function Header() {
     return (
         <>
             <div className="bg-transparent absolute w-full flex justify-between items-center h-16 z-40">
-                <Link href="/"><div className=" cursor-pointer ml-5 font-black tracking-widest text-3xl bg-gradient-to-b from-blue-500 to-blue-800 bg-clip-text text-transparent">Dream Interiors</div></Link>
+                <Link href="/"><div className=" cursor-pointer ml-5 font-black tracking-widest text-3xl bg-gradient-to-b from-blue-300 via-blue-600 to-blue-800 bg-clip-text text-transparent">Dream Interiors</div></Link>
                 <div className="flex-shrink-0" onClick={() => {
                     openMenu(s => !s)
                 }}>
-                    <Menu className="text-blue-800 mr-3 cursor-pointer transition transform hover:scale-125 md:hidden" />
+                    <Menu className="text-brown-light mr-3 cursor-pointer transition transform hover:scale-125 lg:hidden" />
                 </div>
-                <div className="hidden md:flex ">
+                <div className="hidden lg:flex ">
                 {navItems.map((navItem)=>{
                     return (<Link href={navItem.link} key={navItem.link}>
                         <a className="nav-link" >

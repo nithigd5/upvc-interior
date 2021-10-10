@@ -26,9 +26,12 @@ export default function GalleryPage({ galleryItems }) {
         <title>Gallery | PVC Interiors </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Layout >
+    <Layout className="bg-gray-100" >
       <div className="h-16"/>
+      <div className=" rounded-md shadow-md m-1 bg-white p-2">
+      <h3 className="text-2xl font-bold text-center p-3 text-brown-dark">Gallery</h3>
       <GalleryGrid {...galleryItems}  />
+      </div>
       <div className="h-8"/>
       
     </Layout>

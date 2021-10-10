@@ -25,11 +25,11 @@ export default function Footer(props) {
                 <div className="flex-col flex md:flex-row w-full items-center justify-around">
                     <div className="flex flex-col">
                         <div>
-                            <h4 className="font-semibold text-xl w-full text-center">Links</h4>
+                            <h4 className="font-semibold text-xl w-full text-center text-brown-dark">Links</h4>
                             <div className="grid grid-cols-3 place-items-center w-full">
                                 {navItems.map((navItem) => {
                                     return (<Link href={navItem.link} key={navItem.link}>
-                                        <a className="p-2 text-lg font-medium text-gray-600" >
+                                        <a className="p-2 text-lg font-medium text-brown" >
                                             {navItem.title}
                                         </a>
                                     </Link>)
@@ -37,29 +37,29 @@ export default function Footer(props) {
                             </div>
                         </div>
                         <div>
-                            <h4 className="font-semibold text-xl w-full text-center">Recent Works</h4>
+                            <h4 className="font-semibold text-xl w-full text-center text-brown-dark">Recent Works</h4>
                             <div className="grid grid-cols-3 place-items-center w-full">
-                                <div className="p-2 text-lg font-medium text-gray-600">Salem</div>
-                                <div className="p-2 text-lg font-medium text-gray-600">Chennai</div>
-                                <div className="p-2 text-lg font-medium text-gray-600">Erode</div>
-                                <div className="p-2 text-lg font-medium text-gray-600">Tenkasi</div>
-                                <div className="p-2 text-lg font-medium text-gray-600">Madurai</div>
-                                <div className="p-2 text-lg font-medium text-gray-600">Namakkal</div>
+                                <div className="p-2 text-lg font-medium text-brown">Salem</div>
+                                <div className="p-2 text-lg font-medium text-brown">Chennai</div>
+                                <div className="p-2 text-lg font-medium text-brown">Erode</div>
+                                <div className="p-2 text-lg font-medium text-brown">Tenkasi</div>
+                                <div className="p-2 text-lg font-medium text-brown">Madurai</div>
+                                <div className="p-2 text-lg font-medium text-brown">Namakkal</div>
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center justify-center">
+                    <div className="grid grid-cols-2 place-content-center items-center justify-center gap-3">
                         <div>
-                            <h4 className="font-semibold text-xl w-full text-center">Our Address</h4>
-                            <p className="pb-2 w-full text-center">Salem, Tamil Nadu, India <br /> Picode-636305 </p>
+                            <h4 className="font-semibold text-lg w-full text-center text-brown">Our Address</h4>
+                            <p className="w-full text-center text-brown-light font-medium">Salem, <br /> Tamil Nadu, India <br /> Picode-636004. </p>
                         </div>
-                        <div>
-                            <h4 className="font-semibold text-xl w-full text-center">Phone</h4>
-                            <span className="pb-2 w-full text-center font-medium  text-gray-700">+91 {process.env.NEXT_PUBLIC_OWNER_PHONE}</span>
+                        <div className="text-center"> 
+                            <h4 className="font-semibold text-lg w-full text-center text-brown">Phone</h4>
+                            <span className="w-full text-center font-medium  text-brown-light">+91 {process.env.NEXT_PUBLIC_OWNER_PHONE}</span>
                         </div>
-                        <div>
+                        <div className=" text-brown col-span-2 text-center">
                             <h4 className="font-semibold text-xl w-full text-center">Email</h4>
-                            <a className="pb-2 w-full text-center  text-gray-600" href="mailto:shopgeo.in@gmail.com">shopgeo.in@gmail.com</a>
+                            <a className="w-full text-center text-brown-light font-medium" href="mailto:shopgeo.in@gmail.com">shopgeo.in@gmail.com</a>
                         </div>
                     </div>
                     <div>
@@ -67,9 +67,9 @@ export default function Footer(props) {
                         <div className="flex flex-col md:flex-row items-center justify-evenly w-full">
                         <iframe src={gmap} width="300" height="200" style={{border:'0'}} allowFullScreen="" loading="lazy"></iframe>
                             <div>
-                                <div className="grid grid-cols-3 place-items-center">
+                                <div className="grid grid-cols-2 place-items-start">
                                     { locations && locations.map((loc)=>{
-                                            return (<button key={loc.location} className="p-2 text-lg font-medium text-gray-600 hover:text-gray-700" 
+                                            return (<button key={loc.location} className="p-2 text-lg font-medium text-brown hover:text-gray-700" 
                                             onClick={()=> setGmap(loc.src)  } >{loc.location}</button>)
                                         })
                                     }
