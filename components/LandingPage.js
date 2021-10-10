@@ -36,9 +36,9 @@ export default function LandingPage({ galleryItems, projects, children }) {
                     </div>
                     <div className="h-28" />
                     <div className="absolute h-full w-full bg-white opacity-50 z-0" />
-                    <div className="text-2xl font-semibold z-20 mb-3 text-blue-800">Dream Interiors</div>
-                    <div className=" text-3xl text-center md:text-5xl font-black tracking-wide z-10 bg-gradient-to-b from-blue-700 to-blue-800 bg-clip-text text-transparent justify-end">
-                        Best Interior Designers in Tamil Nadu</div>
+                    <div className="text-xl font-semibold z-20 mb-3 text-blue-800">Dream Interiors</div>
+                    <div className=" text-2xl text-center md:text-4xl font-black tracking-wide z-10 bg-gradient-to-b from-blue-700 to-blue-800 bg-clip-text text-transparent justify-end">
+                        Best U-PVC Interior Designers in Tamil Nadu</div>
                     <Link href="/contactus">
                         <a className="btn transform font-medium border-2 rounded-md my-4 " >Book Now</a>
                     </Link>

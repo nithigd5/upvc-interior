@@ -87,14 +87,14 @@ async function sendToUser(transporter, title, body, to) {
     <br/><p style="padding:10px; font-size:25px; color:gray;">We will contact you soon as possible, please stay connect with us by following us on twitter</p>
     <div style="text-align:center; font-size:20px;">
       <div>Our Contact Details:<div/>
-    <b style="color:gray;">Phone: 6374363396, Mail: g.d.nithi5@gmail.com</b> 
+    <b style="color:gray;">Phone: ${process.env.NEXT_PUBLIC_OWNER_PHONE}, <br /> Mail: ${process.env.ADMIN_MAIL}</b> 
     </div>
     <h3 style="text-align:left";>
     Thank You, Dream Interiors.
     </h3>`;
 
     const payload = {
-        from: 'UPVC Interior < admin@upvcinterior.com > ', // sender address
+        from: 'Dream Interiors < admin@upvcinterior.com > ', // sender address
         to: to, // list of receivers
         subject: title, // Subject line
         // text: "Hello world?", // plain text body
