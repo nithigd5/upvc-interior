@@ -39,10 +39,14 @@ export default function Footer(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col items-center justify-center">
                         <div>
                             <h4 className="font-semibold text-xl w-full text-center">Our Address</h4>
                             <p className="pb-2 w-full text-center">Salem, Tamil Nadu, India <br /> Picode-636305 </p>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-xl w-full text-center">Phone</h4>
+                            <span className="pb-2 w-full text-center font-medium  text-gray-700">+91 {process.env.NEXT_PUBLIC_OWNER_PHONE}</span>
                         </div>
                         <div>
                             <h4 className="font-semibold text-xl w-full text-center">Email</h4>
