@@ -23,7 +23,7 @@ export default function OurProjects({projects}) {
         <title>Projects | Dream Interiors</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Layout >
+    <Layout className="bg-gray-100">
       <div className="h-12" />
       <Projects projects={projects} />
     </Layout>
