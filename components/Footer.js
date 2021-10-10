@@ -16,6 +16,7 @@ export default function Footer(props) {
                 setLocations(locations)
                 setGmap(locations[0].src) 
             } )
+        return (setLocations(null))
     },[])
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-export default function locations() {
+export default function Locations() {
     const [gmap, setGmap] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4639.383857427512!2d78.13686457585163!3d12.095629567797548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bac17019b40fe1b%3A0x8f8e764d1cf9f8c2!2sDream%20interiors!5e0!3m2!1sen!2sin!4v1633851465422!5m2!1sen!2sin")
 
     const [locations, setLocations] = useState(null)
@@ -13,6 +13,9 @@ export default function locations() {
                 setLocations(locations)
                 setGmap(locations[0].src)
             })
+        return (
+            setLocations(null)
+        )
     }, [])
 
     return (
