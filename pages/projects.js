@@ -1,7 +1,18 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
+import Projects from '../components/Projects'
 
-export default function Projects({projects}) {
+export async function getServerSideProps() {  
+  const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME+'/api/getProjects')
+  const projects = await res.json()
+  return {
+    props: {
+      projects,
+    },
+  }
+}
+
+export default function OurProjects({projects}) {
   return (
     <div>
       <Head>
@@ -13,11 +24,8 @@ export default function Projects({projects}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <Layout >
-    <div className="h-screen w-full flex items-center justify-center">
-      <h1 className="text-4xl font-bold">
-        Page is UnderConstruction
-      </h1>
-      </div>
+      <div className="h-12" />
+      <Projects projects={projects} />
     </Layout>
     </div>
   )
