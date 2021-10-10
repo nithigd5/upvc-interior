@@ -6,18 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Gallery from './Gallery';
 import Projects from './Projects';
-
-const location = {
-    lat: 11.676927,
-    lng: 78.134517
-};
-
-const mapSize = {
-    width: '100%',
-    height: '200px'
-};
-
-
+import Locations from './Locations'
 
 const sliderImages = ["/images/i (1).jpg", "/images/i (2).jpg", "/images/i (3).jpg", "/images/i (4).jpg"]
 
@@ -59,7 +48,7 @@ export default function LandingPage({ galleryItems, projects, children }) {
             {/* Our Projects */}
             <Projects projects={projects} />
             {/* Location */}
-
+            <Locations />
             {/* About us */}
             {children}
 
