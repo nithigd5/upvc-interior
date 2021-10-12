@@ -59,7 +59,7 @@ export default function Footer(props) {
                         </div>
                         <div className=" text-brown col-span-2 text-center">
                             <h4 className="font-semibold text-xl w-full text-center">Email</h4>
-                            <a className="w-full text-center text-brown-light font-medium" href="mailto:shopgeo.in@gmail.com">shopgeo.in@gmail.com</a>
+                            <a className="w-full text-center text-brown-light font-medium" href={`mailto:${process.env.NEXT_PUBLIC_ADMIN_MAIL}` }>{process.env.NEXT_PUBLIC_ADMIN_MAIL}</a>
                         </div>
                     </div>
                     <div>
