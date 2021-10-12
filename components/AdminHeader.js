@@ -4,7 +4,7 @@ import Menu from "./icons/menu-boxed.svg";
 import Link from 'next/link'
 
 export const navItems = [
-    // {title: "Dashboard",link: "/dasboard"}, 
+    {title: "Dashboard",link: "/admin/"}, 
     { title: "Projects", link: "/admin/projects" },   
     // {title: "Gallery", link: "/admin/gallery"}, 
     { title: "Contact Us Requests", link: "/admin/contactus"},

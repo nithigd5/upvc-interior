@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useForm, useFieldArray } from "react-hook-form";
 import { AiFillCloseCircle, AiOutlineUpload, AiFillFileAdd } from 'react-icons/ai';
 import { RiDeleteBin5Line } from 'react-icons/ri'
+import { OnSuccess as InsertSuccess, OnFailure } from './PopUpModels'
 
 const MAX_UPLOAD_SIZE = 10000000
 
@@ -33,35 +34,7 @@ async function postForm(formData) {
     return data.json()
 }
 
-function InsertSuccess({ closeModel }) {
-    return (
-        <div className="overlay">
-            <div className="z-50 relative w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-                <div className="p-10 rounded z-50 bg-white shadow-md m-auto max-w-max relative text-center">
-                    <h4 className="text-xl font-medium text-gray-800">Project Added Successfully.</h4>
-                    <AiFillCloseCircle
-                        className="absolute z-50 text-4xl text-blue-700 right-2 top-2 bg-white rounded-full
-                         transition-transform transform duration-300 hover:scale-125" onClick={() => { closeModel() }} />
-                </div>
-            </div>
-        </div>
-    )
-}
 
-function OnFailure({ closeModel, msg }) {
-    return (
-        <div className="overlay">
-            <div className="z-50 relative w-3/4 h-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-                <div className="p-10 rounded z-50 bg-white shadow-md m-auto max-w-max relative text-center">
-                    <h4 className="text-xl font-medium text-red-700">{msg}</h4>
-                    <AiFillCloseCircle
-                        className="absolute z-50 text-4xl text-blue-700 right-2 top-2 bg-white rounded-full
-                         transition-transform transform duration-300 hover:scale-125" onClick={() => { closeModel() }} />
-                </div>
-            </div>
-        </div>
-    )
-}
 
 export default function InsertProject() {
 
@@ -167,12 +140,12 @@ export default function InsertProject() {
 
                 <label className="font-medium text-3xl text-brown-dark">Add Project </label>
 
-                <input placeholder="Project Title" type="text" {...register("projectTitle", { required: true, minLength: 3 })} className="input" />
+                <input placeholder="Project Title" type="text" {...register("projectTitle", { required: true, minLength: 3 })} className="input w-3/4" />
 
                 <div className="text-red-500 font-medium ">
                     {errors.projectTitle && "Title is required"}
                 </div>
-                <textarea placeholder="Project Description" type="text" {...register("description", { required: true, minLength: 3 })} className="input" />
+                <textarea placeholder="Project Description" type="text" {...register("description", { required: true, minLength: 3 })} className="input w-3/4" />
 
                 <div className="text-red-500 font-medium ">
                     {errors.description && "Description is required"}
