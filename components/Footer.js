@@ -2,6 +2,7 @@ import React from 'react'
 import { navItems } from './Header'
 import Link from 'next/link';
 import {useState, useEffect} from 'react'
+import FbChatPlugin from './FbChatPlugin'
 
 // const serviceLocations = [
 //     {   
@@ -57,6 +58,8 @@ export default function Footer(props) {
     },[])
 
     return (
+        <>
+        <FbChatPlugin />
         <div className="relative top-full left-0 w-full bg-white" {...props }>
             <div className="flex flex-col gap-3 w-full pt-4 bg-gray-50 rounded-md shadow-md z-50">
                 <div className="flex-col flex md:flex-row w-full items-center justify-around">
@@ -122,5 +125,6 @@ export default function Footer(props) {
                 </div>
             </div>
         </div>
+        </>
     )
 }
