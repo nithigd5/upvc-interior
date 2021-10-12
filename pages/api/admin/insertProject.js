@@ -35,34 +35,46 @@ const insertDb = async (data) => {
   let client = await clientPromise
   let db = client.db("pvcInterior")
   let projects = db.collection("projects")
-  let id = await projects.insertOne(data)
-  console.log("Inserted ID: ", id)
+  return projects.insertOne(data)
 }
 
 apiRoute.post((req, res) => {
   const validFormats = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp']
+  let invalidFile = false
   req.files.forEach(file => {
-    if (validFormats.includes(file.mimetype) && file.size < MAX_UPLOAD_SIZE) {
-      let images = req.files.map((file, i) => {
-        return {
-          title: `images[${i}].title`,
-          image: file.path
-        }
-      })
-      const project = {
-        title: req.body.projectTitle,
-        description: req.body.description,
-        images: images
-      }
-
-      insertDb(project)
-
-      res.status(200).json({ data: 'success' });
-    } else {
+    if (!validFormats.includes(file.mimetype) && !file.size < MAX_UPLOAD_SIZE) {
       deleteFile(file.path)
-      res.status(401).json({ data: 'Invalid File' });
+      invalidFile = true
     }
+
   })
+  if (invalidFile) {
+    res.status(402).json({ result: 'faliure', data: "Invalid Files" });
+  }
+  else {
+    let images = req.files.map((file, i) => {
+      return {
+        title: `images[${i}].title`,
+        image: file.path
+      }
+    })
+    const project = {
+      title: req.body.projectTitle,
+      description: req.body.description,
+      images: images
+    }
+
+    insertDb(project).then(data => {
+      res.status(200).json({ result: 'success', });
+    }).catch(err => {
+      console.log(err)
+      req.files.forEach(file => {
+        deleteFile(file.path)
+      })
+      res.status(401).json({ result: 'faliure', data: "Unable to Insert to Database." });
+    })
+  }
+
 });
 
 export default apiRoute;

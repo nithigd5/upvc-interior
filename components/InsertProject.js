@@ -7,7 +7,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri'
 
 const MAX_UPLOAD_SIZE = 2000000
 
-function postForm(formData) {
+async function postForm(formData) {
     console.log(formData)
     const fd = new FormData();
     fd.append('description', formData.description);
@@ -17,10 +17,10 @@ function postForm(formData) {
         fd.append(`images[${i}].image`, formData.images[i].image[0]);
         fd.append(`images[${i}].title`, formData.images[i].title);
     }
-    for (var value of fd.keys() ) {
+    for (var value of fd.keys()) {
         console.log(value);
-     }    
-     const data = fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/admin/insertProject", {
+    }
+    const data = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/admin/insertProject", {
         method: 'POST',
         // headers: {
         //     'Content-Type': 'multipart/form-data',
@@ -28,7 +28,9 @@ function postForm(formData) {
         mode: 'cors',
         body: fd
     }
-    ).then(res => res.json()).then(data => console.log(data)).catch(e => console.log("Error Posting"))
+    )
+
+    return data.json()
 }
 
 function InsertSuccess({ closeModel }) {
@@ -62,14 +64,12 @@ function OnFailure({ closeModel, msg }) {
 }
 
 export default function InsertProject() {
-    const { register, unregister, control, handleSubmit, watch, reset, formState, getValues } = useForm();
-    const { errors, isSubmitted, isSubmitSuccessful, isSubmitting } = formState
-
-    const onSubmit = (data, e) => postForm(data);
-    const onError = (errors, e) => { console.log(errors, e) }
 
     const [isOpen, openModal] = useState(false)
+    const [isError, openErrorModal] = useState(null)
 
+    const { register, unregister, control, handleSubmit, watch, reset, formState, getValues } = useForm();
+    const { errors, isSubmitted, isSubmitSuccessful, isSubmitting } = formState
     const { fields, append, remove, } = useFieldArray({
         control, // control props comes from useForm (optional: if you are using FormContext)
         name: "images", // unique name for your Field Array
@@ -77,12 +77,24 @@ export default function InsertProject() {
         shouldUnregister: true,
     });
 
-    useEffect(() => {
-        if (!errors && isSubmitSuccessful) {
+    const onSubmit = (data, e) => postForm(data).then(res => {
+        if(res.result==="success"){
             openModal(true)
-            // reset()
+        }else{
+            openErrorModal({ msg: res.data })
         }
-    }, [isSubmitting, isSubmitSuccessful])
+    })
+    // const onError = (errors, e) => {
+    //     console.log(errors, e)
+    // }
+
+
+    // useEffect(() => {
+    //     if (Object.keys(errors).length ===0 && isSubmitSuccessful) {
+    //         openModal(true)
+    //         // reset(   )
+    //     }
+    // }, [isSubmitSuccessful])
 
     const FileInput = ({ name, placeholder, image, del, i }) => {
         const [isInvalid, setValid] = useState(undefined);
@@ -118,26 +130,28 @@ export default function InsertProject() {
             }
         }, [inputImg])
 
-        const checkSize = (file)=> file && file.length>0 && file[0].size && file[0].size < MAX_UPLOAD_SIZE 
-        const check = ()=>{
-            try{
-                console.log("Error images: " ,errors.images[i].image)
+        const checkSize = (file) => file && file.length > 0 && file[0].size && file[0].size < MAX_UPLOAD_SIZE
+        const check = () => {
+            try {
+                console.log("Error images: ", errors.images[i].image)
                 return true
-            }catch(exceptions){
+            } catch (exceptions) {
                 return false
             }
         }
         return (
             <><div className="bg-gray-100 flex flex-col gap-2 rounded-md shadow-sm p-3 relative">
-                <input placeholder={placeholder} type="text" {...register(name)} className="input-sm bg-white" />
+                <input placeholder={placeholder} type="text" {...register(name)} className="input-sm bg-white placeholder-gray-500" />
 
                 <label className="h-36 flex flex-col w-full items-center justify-center bg-white rounded-md shadow-md relative">
                     <img className="absolute w-full h-full z-10" ref={imgRef} />
                     <AiOutlineUpload className="text-2xl cursor-pointer text-blue-500" />
-                    <span className={`font-medium font-lg`+ (check()===true ? " text-red-600 " : " text-brown ")}>*Select Image</span>
-                    <input type="file" accept="image/*" {...register(image, { validate: {
-                        checkSize : file=> checkSize(file) || "File Size Should be less than 2 MB",
-                    }} )} className="hidden" />
+                    <span className={`font-medium font-lg` + (check() === true ? " text-red-600 " : " text-brown ")}>*Select Image</span>
+                    <input type="file" accept="image/*" {...register(image, {
+                        validate: {
+                            checkSize: file => checkSize(file) || "File Size Should be less than 2 MB",
+                        }
+                    })} className="hidden" />
                 </label>
                 <RiDeleteBin5Line
                     className="absolute z-40 text-2xl cursor-pointer text-red-600 right-2 bottom-2 bg-white rounded-full
@@ -148,7 +162,7 @@ export default function InsertProject() {
     }
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit, onError)}
+            <form onSubmit={handleSubmit(onSubmit)}
                 className="gap-3 mx-3 flex  flex-col items-center bg-transparent p-3 z-10 relative" >
 
                 <label className="font-medium text-3xl text-brown-dark">Add Project </label>
@@ -164,17 +178,18 @@ export default function InsertProject() {
                     {errors.description && "Description is required"}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 place-items-center place-content-center gap-2 my-4" >
-                    <h4 className="text-xl text-center font-medium md:col-span-2 text-brown p-2" >Project Images</h4>
-                    {<div className="text-red-600 text-center col-span-2">
+                <div className="flex flex-col justify-center md:grid md:grid-cols-2 place-items-center place-content-center gap-2 my-4" >
+                    <h4 className="text-2xl text-center font-medium md:col-span-2 text-brown p-2" >Project Images</h4>
+                    {<div className="text-red-600 text-center md:col-span-2">
                         Note: Please select image size less than 2 mb.
                     </div>}
                     {fields.map((field, index) => (
                         <FileInput key={field.id} image={`images.${index}.image`} i={index} name={`images.${index}.title`}
                             placeholder={"Image Title"} del={() => remove(index)} />
                     ))}
-                    <button type="button" onClick={() => append({ title: getValues("projectTitle") })} className="md:col-span-2  text-2xl flex flex-row justify-center gap-2 items-center text-green-500 rounded-md shadow-md p-3">
-                        <span>Add</span>
+                    <button type="button" onClick={() => append({ title: getValues("projectTitle") })}
+                        className="md:col-span-2  text-xl flex flex-row justify-center gap-2 items-center text-green-500 rounded-md shadow-md p-2">
+                        <span>Add Image</span>
                         <AiFillFileAdd />
                     </button>
                 </div>
@@ -185,6 +200,11 @@ export default function InsertProject() {
             {isOpen &&
                 <InsertSuccess closeModel={() => {
                     openModal(false)
+                }} />
+            }
+            {isError &&
+                <OnFailure {...isError} closeModel={() => {
+                    openErrorModal(null)
                 }} />
             }
 
