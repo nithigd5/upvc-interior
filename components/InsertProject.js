@@ -5,7 +5,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { AiFillCloseCircle, AiOutlineUpload, AiFillFileAdd } from 'react-icons/ai';
 import { RiDeleteBin5Line } from 'react-icons/ri'
 
-const MAX_UPLOAD_SIZE = 2000000
+const MAX_UPLOAD_SIZE = 10000000
 
 async function postForm(formData) {
     console.log(formData)

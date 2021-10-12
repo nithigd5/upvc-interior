@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 const path = require('path'); // for getting file extension
 const fs = require("fs"); // Or `import fs from "fs";` with ESM
 
-const MAX_UPLOAD_SIZE = 2000000
+const MAX_UPLOAD_SIZE = 10000000
 
 const upload = multer({
   storage: multer.diskStorage({
