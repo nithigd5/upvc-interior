@@ -10,7 +10,7 @@ const MAX_UPLOAD_SIZE = 2000000
 const upload = multer({
   storage: multer.diskStorage({
     destination: './public/uploads/',
-    filename: (req, file, cb) => cb(null, file.fieldname + "-" + uuidv4() + path.extname(file.originalname)),
+    filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname)),
   }),
 });
 
@@ -54,7 +54,7 @@ apiRoute.post((req, res) => {
   else {
     let images = req.files.map((file, i) => {
       return {
-        title: `images[${i}].title`,
+        title: req.body[`images[${i}].title`],
         image: file.path
       }
     })
