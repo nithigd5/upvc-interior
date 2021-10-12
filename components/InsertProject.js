@@ -5,6 +5,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { AiFillCloseCircle, AiOutlineUpload, AiFillFileAdd } from 'react-icons/ai';
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import { OnSuccess as InsertSuccess, OnFailure } from './PopUpModels'
+import { BiLoaderCircle } from "react-icons/bi";
 
 const MAX_UPLOAD_SIZE = 10000000
 
@@ -40,6 +41,7 @@ export default function InsertProject() {
 
     const [isOpen, openModal] = useState(false)
     const [isError, openErrorModal] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const { register, unregister, control, handleSubmit, watch, reset, formState, getValues } = useForm();
     const { errors, isSubmitted, isSubmitSuccessful, isSubmitting } = formState
@@ -53,6 +55,7 @@ export default function InsertProject() {
     const onSubmit = (data, e) => postForm(data).then(res => {
         if(res.result==="success"){
             openModal(true)
+            reset()
         }else{
             openErrorModal({ msg: res.data })
         }
@@ -62,12 +65,13 @@ export default function InsertProject() {
     // }
 
 
-    // useEffect(() => {
-    //     if (Object.keys(errors).length ===0 && isSubmitSuccessful) {
-    //         openModal(true)
-    //         // reset(   )
-    //     }
-    // }, [isSubmitSuccessful])
+    useEffect(() => {
+        if (isSubmitting) {
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+    }, [isSubmitting])
 
     const FileInput = ({ name, placeholder, image, del, i }) => {
         const [isInvalid, setValid] = useState(undefined);
@@ -151,9 +155,9 @@ export default function InsertProject() {
                     {errors.description && "Description is required"}
                 </div>
 
-                <div className="flex flex-col justify-center md:grid md:grid-cols-2 place-items-center place-content-center gap-2 my-4" >
+                <div className="flex flex-col justify-center md:grid md:grid-cols-2 lg:grid-cols-3 place-items-center place-content-center gap-2 my-4" >
                     <h4 className="text-2xl text-center font-medium md:col-span-2 text-brown p-2" >Project Images</h4>
-                    {<div className="text-red-600 text-center md:col-span-2">
+                    {<div className="text-red-600 text-center md:col-span-2 lg:col-span-3">
                         Note: Please select image size less than 2 mb.
                     </div>}
                     {fields.map((field, index) => (
@@ -161,7 +165,7 @@ export default function InsertProject() {
                             placeholder={"Image Title"} del={() => remove(index)} />
                     ))}
                     <button type="button" onClick={() => append({ title: getValues("projectTitle") })}
-                        className="md:col-span-2  text-xl flex flex-row justify-center gap-2 items-center text-green-500 rounded-md shadow-md p-2">
+                        className="md:col-span-2 lg:col-span-3  text-xl flex flex-row justify-center gap-2 items-center text-green-500 rounded-md shadow-md p-2">
                         <span>Add Image</span>
                         <AiFillFileAdd />
                     </button>
@@ -180,7 +184,9 @@ export default function InsertProject() {
                     openErrorModal(null)
                 }} />
             }
-
+            {loading && <div className={"overlay "}>
+                <BiLoaderCircle className="animate-spin z-50  text-7xl font-bold text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            </div> }
         </>
     )
 }
