@@ -8,6 +8,7 @@ export async function getServerSideProps() {
 
   const projects = await res.json()
   const galleryItems = await res1.json()
+  
   return {
     props: {
       projects,

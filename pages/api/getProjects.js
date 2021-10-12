@@ -38,7 +38,7 @@ export default async function handler(req, res) {
   try{
     let projects = collec.find({})
     if(await projects.count()===0){
-      res.status(400).json({error: "No Projects found."})
+      res.status(400).json([])
     }else{
       projects = await projects.toArray()
       projects = projects.map(proj=>{
