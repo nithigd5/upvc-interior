@@ -32,9 +32,9 @@ const deleteFile = async (fileName) => {
 }
 
 const insertDb = async (data) => {
-  let client = await clientPromise
-  let db = client.db("pvcInterior")
-  let projects = db.collection("projects")
+  const client = await clientPromise
+  const db = client.db("pvcInterior")
+  const projects = db.collection("projects")
   return projects.insertOne(data)
 }
 
@@ -61,7 +61,8 @@ apiRoute.post((req, res) => {
     const project = {
       title: req.body.projectTitle,
       description: req.body.description,
-      images: images
+      images: images,
+      date: new Date(),
     }
 
     insertDb(project).then(data => {

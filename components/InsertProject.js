@@ -39,7 +39,7 @@ async function postForm(formData) {
 
 export default function InsertProject() {
 
-    const [isOpen, openModal] = useState(false)
+    const [isOpen, openModal] = useState(null)
     const [isError, openErrorModal] = useState(null)
     const [loading, setLoading] = useState(false)
 
@@ -54,7 +54,7 @@ export default function InsertProject() {
 
     const onSubmit = (data, e) => postForm(data).then(res => {
         if(res.result==="success"){
-            openModal(true)
+            openModal({ msg: "Project Added Successfully." })
             reset()
         }else{
             openErrorModal({ msg: res.data })
@@ -177,7 +177,7 @@ export default function InsertProject() {
             {isOpen &&
                 <InsertSuccess closeModel={() => {
                     openModal(false)
-                }} />
+                }} {...isOpen} />
             }
             {isError &&
                 <OnFailure {...isError} closeModel={() => {
