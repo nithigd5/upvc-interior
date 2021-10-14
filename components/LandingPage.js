@@ -7,10 +7,11 @@ import Image from 'next/image'
 import Gallery from './Gallery';
 import Projects from './Projects';
 import Locations from './Locations'
+import Service from './Service'
 
 const sliderImages = ["/images/i (1).jpg", "/images/i (2).jpg", "/images/i (3).jpg", "/images/i (4).jpg"]
 
-export default function LandingPage({ galleryItems, projects, children }) {
+export default function LandingPage({ galleryItems, projects, children, services }) {
 
     return (
         <>
@@ -50,6 +51,26 @@ export default function LandingPage({ galleryItems, projects, children }) {
             {/* Location */}
             <Locations />
             {/* About us */}
+
+            <div className="bg-white w-full ansolute">
+                    <div className="h-16 w-full" />
+                    <h4 className="text-3xl font-medium m-auto p-3 text-center">Our Services</h4>
+                    {services.map(service=>{
+                        return(
+                            <div className="bg-gray-100 p-4" key={service.id}>
+                                <h4 className="text-2xl font-medium text-gray-600 pb-3">
+                                    {service.serviceName}
+                                </h4>
+                                <div className="flex flex-col md:grid gap-2 md:grid-cols-3 p-3 ">
+                                    {service.services.map(s=>{
+                                        return (<Service {...s} key={s.id} />)
+                                    })}
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+
             {children}
 
 
