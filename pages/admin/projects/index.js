@@ -73,7 +73,7 @@ export default function ProjectsPage({ allProjects }) {
             <div className="h-24 w-full" />
             <div className="flex flex-col items-center justify-center py-4">
                 <Link href="/admin/projects/add" >
-                    <a className="p-2 ring-2 rounded-md shadow-md text-gray-800 hover:bg-blue-500 hover:text-white"> Add Project </a>
+                    <a className="p-2 transition-colors duration-400 ring-2 rounded-md shadow-md text-gray-800 hover:bg-blue-500 hover:text-white"> Add Project </a>
                 </Link>
                 <projectContext.Provider value={projectContextValue}>
                     <div className="w-full">
