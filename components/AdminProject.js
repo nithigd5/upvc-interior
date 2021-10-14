@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Gallery from './Gallery'
 import { projectContext } from '../pages/admin/projects'
 
-export default function project({_id, title, description, images }) {
+export default function Project({_id, title, description, images }) {
     const { onDelete, onEdit } = useContext(projectContext)
 
     return (
