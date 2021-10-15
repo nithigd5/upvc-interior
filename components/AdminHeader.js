@@ -8,6 +8,7 @@ export const navItems = [
     { title: "Projects", link: "/admin/projects" },   
     // {title: "Gallery", link: "/admin/gallery"}, 
     { title: "Contact Us Requests", link: "/admin/contactus"},
+    { title: "logout", link: "/admin/logout"},
 ]
 
 export default function Header() {
@@ -21,7 +22,9 @@ export default function Header() {
     return (
         <>
             <div className="bg-transparent absolute w-full flex justify-between items-center h-16 z-40 shadow-md">
-                <Link href="/"><div className=" cursor-pointer ml-5 font-black tracking-widest text-3xl bg-gradient-to-b from-blue-300 via-blue-600 to-blue-800 bg-clip-text text-transparent">Dream Interiors</div></Link>
+                <Link href="/">
+                <a className=" cursor-pointer ml-5 font-black tracking-widest text-3xl bg-gradient-to-b
+                 from-blue-300 via-blue-600 to-blue-800 bg-clip-text text-transparent">Dream Interiors</a></Link>
                 <div className="flex-shrink-0" onClick={() => {
                     openMenu(s => !s)
                 }}>

@@ -2,6 +2,8 @@ import React from 'react'
 import { OnSuccess, OnFailure } from '../../components/PopUpModels'
 import { useForm } from "react-hook-form";
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import {setCookie} from '../../lib/cookies'
 
 async function postForm(formData) {
     const data = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/auth/login", {
@@ -10,18 +12,22 @@ async function postForm(formData) {
         body: JSON.stringify(formData)
     }
     )
+    console.log(data)
     return data.json()
 }
 
 export default function LoginPage() {
     const { register, unregister, handleSubmit,setError,clearErrors, watch, reset, formState, getValues } = useForm();
     const { isSubmitSuccessful, isSubmitting, errors } = formState
+    const router = useRouter()
 
     const onSubmit = (data, e) => postForm(data).then(res => {
         clearErrors()
         console.log(res)
         if (res.result === "success") {
             console.log("Login Success")
+            setCookie('token',res.accessToken,0.3)
+            router.push("/admin")
         } else {
             setError("password", {
                 type: "manual",

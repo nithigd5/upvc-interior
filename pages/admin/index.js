@@ -3,7 +3,33 @@ import Layout from '../../components/AdminLayout'
 import Head from 'next/head'
 import Link from 'next/link'
 
+
+export async function getServerSideProps( { req,res} ) {
+    const login = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/auth/checkLogin",{
+        method: 'POST',
+        body: JSON.stringify({ token: req.cookies.token }),
+    })
+    let data = await login.json()
+    if(data.result === "success"){
+        return {
+          props: {
+            
+          }, // Will be passed to the page component as props
+        }
+    }else{
+        return {
+            redirect: {
+              destination: '/admin/login',
+              permanent: false,
+            },
+        }
+    }
+  }
+  
+
 export default function AdminDashboard() {
+
+
     return (
     <>
         <Head>

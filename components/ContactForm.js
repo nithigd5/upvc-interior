@@ -46,6 +46,7 @@ export default function ContactForm() {
             openModal(true)
             reset()
         }
+        return 
     },[isSubmitting, isSubmitSuccessful])
 
     return (
@@ -54,7 +55,7 @@ export default function ContactForm() {
 
                 <label className="font-medium text-3xl text-brown-dark">Contact Form </label>
 
-                <input placeholder="Name" type="text" {...register("name", { required: true, minLength: 3 })} className="input" />
+                <input placeholder="Name" type="text" {...register("name", { required: true, minLength: 3 })} className="input w-3/4" />
 
                 <div className="text-red-500 font-medium ">
                     {errors.name && "First name is required"}
@@ -66,7 +67,7 @@ export default function ContactForm() {
                         pattern: /[6-9][0-9]{9}/,
                         minLength: 10,
                         maxLength:10,
-                    })} type="number" className="input" />
+                    })} type="number" className="input w-3/4" />
 
                 <div className="text-red-500 font-medium ">
                     {errors.phone && "Please Enter Valid Phone"}
@@ -74,16 +75,16 @@ export default function ContactForm() {
 
                 <input placeholder="Email"
                     {...register("email", { required: true, pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}
-                    type="email" className="input" />
+                    type="email" className="input w-3/4" />
 
                 <div className="text-red-500 font-medium ">
                     {errors.email && "Please Enter Valid Email"}
                 </div>
 
-                <input placeholder="Subject" {...register("subject")} type="text" className="input" />
+                <input placeholder="Subject" {...register("subject")} type="text" className="input w-3/4" />
 
 
-                <textarea placeholder="Message" {...register("message")} className="input" />
+                <textarea placeholder="Message" {...register("message")} className="input w-3/4" />
 
                 <input type="submit" className="px-6 py-3 rounded-md shadow-md bg-brown text-white font-medium cursor-pointer transition hover:bg-brown-dark duration-300" />
 
