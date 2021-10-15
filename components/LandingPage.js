@@ -26,9 +26,9 @@ export default function LandingPage({ galleryItems, projects, children, services
                     </div>
                     <div className="h-28" />
                     <div className="absolute h-full w-full bg-white opacity-50 z-0" />
-                    <div className="text-xl font-semibold z-20 text-brown-dark flex-shrink-0 w-max ">Dream Interiors</div>
-                    <div className=" text-2xl text-center md:text-4xl font-black tracking-wide z-10 text-brown bg-clip-text text-transparent justify-end">
-                        Best U-PVC Interior Designers in Tamil Nadu</div>
+                    <div className="text-xl font-semibold z-20 text-brown flex-shrink-0 w-max ">Dream Interiors</div>
+                    <div className=" text-2xl text-center md:text-3xl font-black tracking-wide z-10 text-brown-dark bg-clip-text text-transparent justify-end">
+                        Looking for Best UPVC Interior Designers in Tamil Nadu, You are at right place.</div>
                     <Link href="/contactus">
                         <a className="btn bg-brown-light hover:text-brown transform font-medium border-2 rounded-md my-4 flex-shrink-0" >Book Now</a>
                     </Link>
@@ -38,7 +38,7 @@ export default function LandingPage({ galleryItems, projects, children, services
                         <Phone className="stroke-0 stroke-current" />
                     </div>
                     <div className="p-3 text-center text-sm md:text-lg z-20 font-bold text-brown-light">
-                        Check out our Locations and Book your a amazing interior designs for your lovely house.
+                        Check out our Locations and Book your amazing interior designs for your lovely house.
                     </div>
                 </div>
             </div>

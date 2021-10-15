@@ -9,7 +9,7 @@ const galleryItems = [{
     { image: "/images/i (4).jpg", title: "UPVC Interior Gallery" },
     { image: "/images/i (5).jpg", title: "UPVC Interior Gallery" },
 ],
-    description: "Do you want to setup a PVC modular kitchen for your home? You have come to the right place. We have PVC modular kitchens for different customers. Our company has a lot of customers, especially salem head office branch office coimbatore, and all over tamil nadu."
+    description: "We made a lots of Interior Designs in major cities in Tamil nadu with best modern design look, checkout our wonderfull gallery for a various extraordinary designs in different patterns. we are always ready to serve our service to your beautiful house, kindly don't heistate to call us."
 }]
 
 export default function handler(req, res) {

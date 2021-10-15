@@ -19,7 +19,7 @@ export default function Locations() {
     }, [])
 
     return (
-        <div className="mb-4 bg-white m-3 p-3 rounded-md shadow-md">
+        <div className="mb-4 bg-white m-3 p-3 rounded-md shadow-md" id="ourlocations">
             <h4 className="font-medium text-2xl w-full text-center py-2">Our Service Locations</h4>
             <div className="flex flex-col items-center justify-evenly w-full">
                 <div>
