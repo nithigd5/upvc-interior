@@ -1,9 +1,8 @@
 import React from 'react'
-import { OnSuccess, OnFailure } from '../../components/PopUpModels'
 import { useForm } from "react-hook-form";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import {setCookie} from '../../lib/cookies'
+import {setCookie} from '../lib/cookies'
 
 async function postForm(formData) {
     const data = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/auth/login", {

@@ -8,7 +8,7 @@ export const navItems = [
     { title: "Projects", link: "/admin/projects" },   
     // {title: "Gallery", link: "/admin/gallery"}, 
     { title: "Contact Us Requests", link: "/admin/contactus"},
-    { title: "logout", link: "/admin/logout"},
+    { title: "logout", link: "/logout"},
 ]
 
 export default function Header() {

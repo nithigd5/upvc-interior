@@ -35,7 +35,7 @@ async function login({ username, password }) {
 }
 
 async function checkLogin(username, token) {
-  
+
   const client = await clientPromise
   const db = client.db("pvcInterior")
   const users = db.collection("users")
@@ -48,6 +48,18 @@ async function checkLogin(username, token) {
   }
 }
 
+async function logout(username,token) {
+  const client = await clientPromise
+  const db = client.db("pvcInterior")
+  const users = db.collection("users")
+  const user = await users.findOne({ username: username })
+  if (user && user.username === username && user.accessToken && user.accessToken == token) {
+    await users.updateOne({ username: username }, { $set: { accessToken: null } })
+    return true
+  } else {
+    return false
+  }
+}
 
 apiRoute.use((req, res, next) => {
 
@@ -72,11 +84,23 @@ apiRoute.post(async (req, res) => {
 
       break;
     case "logout":
-      res.end(`Post: LoggedOut `)
+      var data = JSON.parse(req.body)
+      var token = data.token
+      jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) return res.status(401).json({ result: "failed", msg: "not signedIn" });
+        let check = await logout(user.username, token);
+
+        if (check) {
+          res.status(200).json({ result: "success" })
+        } else {
+          res.status(401).json({ result: "failed", msg: "not signedIn" })
+        }
+      })
       break;
 
     case "checkLogin":
-      const data = JSON.parse(req.body)
+
+      var data = req.body
       var token = data.token
       jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
         if (err) return res.status(401).json({ result: "failed", msg: "not signedIn" });

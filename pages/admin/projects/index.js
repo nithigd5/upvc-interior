@@ -1,28 +1,59 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Layout from '../../../components/AdminLayout'
 import Head from 'next/head'
 import Link from 'next/link'
 import AdminProjects from '../../../components/AdminProjects'
 import { OnSuccess, OnFailure } from '../../../components/PopUpModels'
 import { BiLoaderCircle } from "react-icons/bi";
+import Cookies from 'cookies'
 
-export async function getServerSideProps() {
-    const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + '/api/getProjects')
+export async function getServerSideProps({ req, res }) {
 
-    const allProjects = await res.json()
+    const cookies = new Cookies(req, res)
 
-    return {
-        props: {
-            allProjects,
+    if (!req.cookies.token) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            },
+        }
+    }
+    const login = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/auth/checkLogin", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ token: cookies.get('token') }),
+    })
+    let data = await login.json()
+    if (data.result === "success") {
+        const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + '/api/getProjects')
+
+        const allProjects = await res.json()
+
+        return {
+            props: {
+                allProjects,
+            },
+        }
+    } else {
+        cookies.set('token')
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            },
+        }
     }
 }
+
 
 
 export const projectContext = React.createContext()
 
 export default function ProjectsPage({ allProjects }) {
-    const [projects , setProjects ] = useState(allProjects)
+    const [projects, setProjects] = useState(allProjects)
 
     const [isOpen, openModal] = useState(null)
     const [isError, openErrorModal] = useState(null)
@@ -31,30 +62,30 @@ export default function ProjectsPage({ allProjects }) {
     async function onDelete(_id) {
         console.log(_id)
         setLoading(true)
-        const data = {deleteImages: true, id: _id }
-    
-        const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/admin/deleteProject",{
+        const data = { deleteImages: true, id: _id }
+
+        const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + "/api/admin/deleteProject", {
             method: 'POST',
             mode: 'cors',
             body: JSON.stringify(data)
         })
         const result = await res.json();
         console.log(result)
-        if(result.result === "success"){
-            openModal({msg: "Project Deleted Successfully"} )
-            setProjects(projs=>{
-                return(projs.filter(p=>p._id !== _id   ))
+        if (result.result === "success") {
+            openModal({ msg: "Project Deleted Successfully" })
+            setProjects(projs => {
+                return (projs.filter(p => p._id !== _id))
             })
-        }else{
-            openErrorModal({msg:"unable to delete Project."})
+        } else {
+            openErrorModal({ msg: "unable to delete Project." })
         }
         setLoading(false)
     }
-    
+
     async function onEdit(_id) {
-       console.log("Projects Edit need to be added")
+        console.log("Projects Edit need to be added")
     }
-    async function fetchAllProjects(){
+    async function fetchAllProjects() {
         const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN_NAME + '/api/getProjects')
 
         const allProjects = await res.json()
@@ -93,7 +124,7 @@ export default function ProjectsPage({ allProjects }) {
             }
             {loading && <div className={"overlay "}>
                 <BiLoaderCircle className="animate-spin z-50  text-7xl font-bold text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-            </div> }
+            </div>}
         </Layout>
     </>
     )
