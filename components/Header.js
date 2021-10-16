@@ -24,8 +24,8 @@ export default function Header() {
         <>
             <div className="bg-transparent absolute w-full flex justify-between items-center h-16 z-40 shadow-md">
                 <Link href="/">
-                <a className=" cursor-pointer ml-5 font-black tracking-widest text-3xl bg-gradient-to-b 
-                from-blue-300 via-blue-600 to-blue-800 bg-clip-text text-transparent">Dream Interiors</a></Link>
+                <a className=" cursor-pointer ml-5 font-black tracking-widest text-3xl bg-gradient-to-r 
+                from-blue-800 via-blue-600 to-blue-500 bg-clip-text text-transparent">Dream Interiors</a></Link>
                 <div className="flex-shrink-0" onClick={() => {
                     openMenu(s => !s)
                 }}>
