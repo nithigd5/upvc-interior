@@ -12,6 +12,7 @@ const apiRoute = nextConnect({
   onNoMatch(req, res) {
     res.status(405).send({ error: `Method '${req.method}' Not Allowed` });
   },
+  attachParams: true,
 });
 
 function generateAccessToken(user) {
@@ -48,7 +49,7 @@ async function checkLogin(username, token) {
   }
 }
 
-async function logout(username,token) {
+async function logout(username, token) {
   const client = await clientPromise
   const db = client.db("pvcInterior")
   const users = db.collection("users")
@@ -61,61 +62,46 @@ async function logout(username,token) {
   }
 }
 
-apiRoute.use((req, res, next) => {
+apiRoute.post("/api/auth/login", async (req, res) => {
+  const cred = JSON.parse(req.body)
+  var token = await login({ ...cred })
 
-  next()
+  if (token) {
+    res.json({ result: "success", accessToken: token })
+  } else {
+    res.status(402).json({ result: "failed", msg: "username or password is Incorrect." })
+  }
 })
 
+apiRoute.post("/api/auth/logout", async (req, res) => {
+  var data = JSON.parse(req.body)
+  var token = data.token
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+    if (err) return res.status(401).json({ result: "failed", msg: "not signedIn" });
+    let check = await logout(user.username, token);
 
-apiRoute.post(async (req, res) => {
-  const { auth } = req.query
+    if (check) {
+      res.status(200).json({ result: "success" })
+    } else {
+      res.status(401).json({ result: "failed", msg: "not signedIn" })
+    }
+  })
+})
 
-  switch (auth[0]) {
+apiRoute.post("/api/auth/checkLogin", async (req, res) => {
 
-    case "login":
-      const cred = JSON.parse(req.body)
-      var token = await login({ ...cred })
+  var data = req.body
+  var token = data.token
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+    if (err) return res.status(401).json({ result: "failed", msg: "not signedIn" });
+    let check = await checkLogin(user.username, token);
 
-      if (token) {
-        res.json({ result: "success", accessToken: token })
-      } else {
-        res.status(402).json({ result: "failed", msg: "username or password is Incorrect." })
-      }
-
-      break;
-    case "logout":
-      var data = JSON.parse(req.body)
-      var token = data.token
-      jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
-        if (err) return res.status(401).json({ result: "failed", msg: "not signedIn" });
-        let check = await logout(user.username, token);
-
-        if (check) {
-          res.status(200).json({ result: "success" })
-        } else {
-          res.status(401).json({ result: "failed", msg: "not signedIn" })
-        }
-      })
-      break;
-
-    case "checkLogin":
-
-      var data = req.body
-      var token = data.token
-      jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
-        if (err) return res.status(401).json({ result: "failed", msg: "not signedIn" });
-        let check = await checkLogin(user.username, token);
-
-        if (check) {
-          res.status(200).json({ result: "success" })
-        } else {
-          res.status(401).json({ result: "failed", msg: "not signedIn" })
-        }
-      })
-      break;
-    default:
-      res.status(502).end("Default")
-  }
+    if (check) {
+      res.status(200).json({ result: "success" })
+    } else {
+      res.status(401).json({ result: "failed", msg: "not signedIn" })
+    }
+  })
 })
 
 export default apiRoute;

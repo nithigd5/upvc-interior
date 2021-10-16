@@ -51,7 +51,7 @@ export default function LandingPage({ galleryItems, projects, children, services
             {/* Location */}
             <Locations />
             {/* About us */}
-
+{/* 
             <div className="bg-white w-full ansolute">
                     <div className="h-16 w-full" />
                     <h4 className="text-3xl font-medium m-auto p-3 text-center">Our Services</h4>
@@ -69,7 +69,7 @@ export default function LandingPage({ galleryItems, projects, children, services
                             </div>
                         )
                     })}
-                </div>
+                </div> */}
 
             {children}
 

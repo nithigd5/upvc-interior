@@ -6,7 +6,7 @@ import Link from 'next/link'
 export const navItems = [
     {title: "Home",link: "/"}, 
     { title: "Our Locations", link: "/#ourlocations"},
-    { title: "Our Services", link: "/services" },
+    // { title: "Our Services", link: "/services" },
     { title: "Projects", link: "/projects" },   
     {title: "Gallery", link: "/gallery"}, 
     { title: "Contact Us", link: "/contactus"},

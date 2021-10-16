@@ -4,6 +4,7 @@ import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 const path = require('path'); // for getting file extension
 const fs = require("fs"); // Or `import fs from "fs";` with ESM
+const jwt = require('jsonwebtoken')
 
 const MAX_UPLOAD_SIZE = 10000000
 
@@ -23,7 +24,30 @@ const apiRoute = nextConnect({
   },
 });
 
-apiRoute.use(upload.any());
+
+async function checkLogin(req, res, next) {
+  if (req.cookies.token) {
+    const client = await clientPromise
+    const token = req.cookies.token
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, { username }) => {
+      if (err) return res.status(401).json({ result: "failed", msg: "Not signedIn" });
+      const db = client.db("pvcInterior")
+      const users = db.collection("users")
+      const user = await users.findOne({ username: username })
+      if (user && user.username === username && user.accessToken && user.accessToken == token) {
+        next()
+      } else {
+        await users.updateOne({ username: username }, { $set: { accessToken: null } })
+        res.status(401).json({ result: "failed", msg: "Not signedIn" })
+      }
+    })
+  } else {
+    res.status(401).json({ result: "failed", msg: "Not signedIn" })
+  }
+}
+
+apiRoute.use(checkLogin).use(upload.any());
 
 const deleteFile = async (fileName) => {
   if (fs.unlinkSync(fileName)) {
@@ -49,7 +73,7 @@ apiRoute.post((req, res) => {
 
   })
   if (invalidFile) {
-    res.status(402).json({ result: 'faliure', data: "Invalid Files" });
+    res.status(402).json({ result: 'faliure', msg: "Invalid Files" });
   }
   else {
     let images = req.files.map((file, i) => {
@@ -72,7 +96,7 @@ apiRoute.post((req, res) => {
       req.files.forEach(file => {
         deleteFile(file.path)
       })
-      res.status(401).json({ result: 'faliure', data: "Unable to Insert to Database." });
+      res.status(401).json({ result: 'faliure', msg: "Unable to Insert to Database." });
     })
   }
 

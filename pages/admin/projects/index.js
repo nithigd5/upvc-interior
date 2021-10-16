@@ -77,7 +77,7 @@ export default function ProjectsPage({ allProjects }) {
                 return (projs.filter(p => p._id !== _id))
             })
         } else {
-            openErrorModal({ msg: "unable to delete Project." })
+            openErrorModal({ msg: result.msg })
         }
         setLoading(false)
     }

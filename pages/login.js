@@ -22,7 +22,6 @@ export default function LoginPage() {
 
     const onSubmit = (data, e) => postForm(data).then(res => {
         clearErrors()
-        console.log(res)
         if (res.result === "success") {
             console.log("Login Success")
             setCookie('token',res.accessToken,0.3)

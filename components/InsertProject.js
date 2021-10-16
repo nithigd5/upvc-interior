@@ -57,7 +57,7 @@ export default function InsertProject() {
             openModal({ msg: "Project Added Successfully." })
             reset()
         }else{
-            openErrorModal({ msg: res.data })
+            openErrorModal({ msg: res.msg })
         }
     })
     // const onError = (errors, e) => {
