@@ -22,7 +22,7 @@ export default function Header() {
     }
     return (
         <>
-            <div className="bg-transparent absolute w-full flex justify-between items-center h-16 z-40 shadow-md">
+            <div className="bg-transparent backdrop-filter backdrop-blur-sm absolute w-full flex justify-between items-center h-16 z-40 shadow-md">
                 <Link href="/">
                 <a className=" cursor-pointer ml-5 font-black tracking-widest text-3xl bg-gradient-to-r 
                 from-blue-800 via-blue-600 to-blue-500 bg-clip-text text-transparent">Dream Interiors</a></Link>
