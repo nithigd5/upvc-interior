@@ -94,7 +94,7 @@ async function sendToUser(transporter, title, body, to) {
     </h3>`;
 
     const payload = {
-        from: 'Dream Interiors < admin@upvcinterior.com > ', // sender address
+        from: 'Dream Interiors < support@upvcinterior.com > ', // sender address
         to: to, // list of receivers
         subject: title, // Subject line
         // text: "Hello world?", // plain text body
