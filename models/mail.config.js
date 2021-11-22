@@ -1,7 +1,7 @@
 const config = {
-    host : 'host18.dnsinweb.com',
+    host : 'upvcinterior.com',
     port : 465,
-    username: 'upvcinterior@shopgeo.in',
+    username: 'support@upvcinterior.com',
     password: 'devops@2000',
     
 }
