@@ -1,3 +1,7 @@
+
+### Video Demo Link: [LinkedIn Post Link](https://www.linkedin.com/posts/nithi-gd-b09743166_nextjs-reactjs-tailwindcss-activity-6855900683426758656-l_FE?utm_source=share&utm_medium=member_desktop)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
