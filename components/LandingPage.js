@@ -26,11 +26,11 @@ export default function LandingPage({ galleryItems, projects, children, services
                     </div>
                     <div className="h-28" />
                     <div className="absolute h-full w-full bg-white opacity-50 z-0" />
-                    <div className="text-2xl font-semibold z-20 text-brown flex-shrink-0 w-max ">Dream Interiors</div>
+                    <div className="text-2xl font-semibold z-20 text-brown flex-shrink-0 w-max ">Web Developer]</div>
                     <div className=" text-xl text-center md:text-3xl font-black p-2 tracking-wide z-10 text-brown-dark bg-clip-text text-transparent justify-end">
-                        Looking for Best UPVC Interior Designers in Tamil Nadu, You are at right place.</div>
+                        Thanks for viewing my work.</div>
                     <Link href="/contactus">
-                        <a className="btn bg-brown-light hover:text-brown transform font-medium border-2 rounded-md whitespace-nowrap" >Book Now</a>
+                        <a className="btn bg-brown-light hover:text-brown transform font-medium border-2 rounded-md whitespace-nowrap" >Call Now</a>
                     </Link>
                     <div className="text-2xl text-center font-semibold md:text-3xl text-brown-dark flex items-center gap-2 transition
                          transform duration-300 hover:scale-110 cursor-pointer">
