@@ -26,7 +26,7 @@ export default function LandingPage({ galleryItems, projects, children, services
                     </div>
                     <div className="h-28" />
                     <div className="absolute h-full w-full bg-white opacity-50 z-0" />
-                    <div className="text-2xl font-semibold z-20 text-brown flex-shrink-0 w-max ">Web Developer]</div>
+                    <div className="text-2xl font-semibold z-20 text-brown flex-shrink-0 w-max ">Web Developer</div>
                     <div className=" text-xl text-center md:text-3xl font-black p-2 tracking-wide z-10 text-brown-dark bg-clip-text text-transparent justify-end">
                         Thanks for viewing my work.</div>
                     <Link href="/contactus">
@@ -38,7 +38,7 @@ export default function LandingPage({ galleryItems, projects, children, services
                         <Phone className="stroke-0 stroke-current" />
                     </div>
                     <div className="p-3 text-center text-sm md:text-lg z-20 font-bold text-brown-light">
-                        Check out our Locations and Book your amazing interior designs for your lovely house.
+                        Sample Showcase Web site for Interior Designers.
                     </div>
                 </div>
             </div>

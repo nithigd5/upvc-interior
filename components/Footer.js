@@ -126,7 +126,7 @@ export default function Footer(props) {
 
                     <div>
                         <hr className="w-full" />
-                        <p className=" text-center w-full font-medium text-sm py-4">Dream Interiors | All rights reserved</p>
+                        <p className=" text-center w-full font-medium text-sm py-4">Web Developer | All rights reserved</p>
                     </div>
                 </div>
             </div>
