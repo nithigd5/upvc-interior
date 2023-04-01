@@ -25,7 +25,7 @@ export default function Home({projects , galleryItems, services}) {
       <Head>
         <meta
           name="description"
-          content="Dream Interiors | Best U-PVC Interior Designers in India"
+          content="Best Commercials in India"
         />
         <title>Dream Interiors | U-PVC Interior</title>
         <link rel="icon" href="/favicon.ico" />
